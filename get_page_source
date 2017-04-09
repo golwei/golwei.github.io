@@ -1,0 +1,67 @@
+#python 环境
+docker pull python
+#phantomjs 执行文件
+wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && tar -jxvf phantomjs-2.1.1-linux-x86_64.tar.bz2
+
+#启动环境
+docker run --rm -it -v ~/phantomjs:/phantomjs python bash
+
+#python 交互环境
+#python代码 .py
+pip install selenium
+python
+from selenium import webdriver
+driver = webdriver.PhantomJs()
+driver.get('http://')
+
+#===============网页example====================
+from selenium import webdriver
+driver = webdriver.PhantomJS()
+driver.get("http://hotel.qunar.com/")
+data = driver.title
+print data
+
+#输出
+my_page_source = open('/mypagesource.txt','w')
+my_page_source.write(driver.page_source)
+#=============================================
+
+
+
+
+#================================================
+
+from selenium import webdriver
+
+driver = webdriver.PhantomJS()
+driver.get('http://hotel.qunar.com/city/beijing_city/dt-20438/?in_track=hotel_recom_beijing_city02')
+data = driver.find_element_by_id("jd_comments").text
+print data
+driver.quit()
+
+#输出
+整体评价
+?
+4.4分
+我要点评
+热门排序
+时间排序
+全部
+好评
+中评
+差评
+只看砖家点评
+
+
+#=================================================
+
+from selenium import webdriver
+
+driver = webdriver.PhantomJS()
+driver.get('http://hotel.qunar.com/city/beijing_city/dt-20438/?in_track=hotel_recom_beijing_city02')
+data = driver.page_source
+print data
+driver.quit()
+
+#=============================
+
